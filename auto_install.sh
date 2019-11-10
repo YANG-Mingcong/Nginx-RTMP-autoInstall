@@ -97,4 +97,16 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 
-#sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.asli
+# auto configuration
+sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.asli
+cd /usr/local/src/
+sudo rm -rf /usr/local/src/nginx.conf
+sudo wget https://raw.githubusercontent.com/YANG-Mingcong/Nginx-RTMP-autoInstall/master/nginx.conf
+
+sudo cp /usr/local/src/nginx.conf /etc/nginx/nginx.conf
+sudo chown nginx:nginx /etc/nginx/nginx.conf
+
+sudo mkdir -p /mnt/hls
+sudo chown -R nginx:nginx /mnt/hls
+sudo systemctl restart nginx
+
